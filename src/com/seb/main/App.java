@@ -12,6 +12,7 @@ import java.awt.Toolkit;
 public class App {
 
 	private final JFrame FRAME;
+	private final Screen SCREEN;
 	
 	public static final int WIDTH = 720;
 	public static final int HEIGHT = WIDTH / 16 * 9;
@@ -23,13 +24,15 @@ public class App {
 	
 	public App() {
 		
-		
+		SCREEN = new Screen();
 		FRAME = new JFrame();
+		
 		FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		FRAME.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		FRAME.setUndecorated(true);
 		
 		FRAME.setVisible(true);
+		FRAME.add(SCREEN);
 		
 		System.out.println("runn....");
 	}
