@@ -34,10 +34,10 @@ public class App {
 		FRAME.setVisible(true);
 		FRAME.add(SCREEN);
 		
-		System.out.println("runn....");
+		System.out.println("Running....");
 	}
 	
 	public static boolean isMac() {
-		return System.getProperty("os.name").indexOf("Mac OS X") >=0;
+		return System.getProperty("os.name").indexOf("Mac OS X") >=0 || System.getProperty("os.name").indexOf("Linux") >=0;
 	}
 }
