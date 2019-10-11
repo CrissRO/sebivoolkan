@@ -1,13 +1,13 @@
 package com.seb.main;
 
 import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
-import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
+import com.seb.map.Map;
+import com.seb.utils.Tuple2D;
 
 public class App {
 
@@ -15,12 +15,17 @@ public class App {
 	private final Screen SCREEN;
 	
 	public static final int WIDTH = 720;
-	public static final int HEIGHT = WIDTH / 16 * 9;
+	public static final int HEIGHT = 480;
 	
 	public static  final Rectangle BOUNDS = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 	
 	public static final int SCREEN_WIDTH = (int) (isMac() ? BOUNDS.getWidth() : Toolkit.getDefaultToolkit().getScreenSize().getWidth());
 	public static final int SCREEN_HEIGHT = (int) (isMac() ? BOUNDS.getHeight() : Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+	
+	
+	public static final int CELL_SIZE = 20;
+	
+	public static final Map MAP = new Map(new Tuple2D(HEIGHT/CELL_SIZE,WIDTH/CELL_SIZE),new Tuple2D(CELL_SIZE,CELL_SIZE));
 	
 	public App() {
 		
@@ -33,6 +38,8 @@ public class App {
 		
 		FRAME.setVisible(true);
 		FRAME.add(SCREEN);
+		
+		SCREEN.addEntity(MAP);
 		
 		System.out.println("Running....");
 	}
